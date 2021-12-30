@@ -5,14 +5,14 @@
 #'
 #' @param file path to file 
 #' @param stzrt integer to select the administrative level (see details)
-#' @param version which GV100 version. If NULL the version is guessed based on the file name. 
-#' @param encoding encoding of the file
+#' @param version which GV100 version. Either 'AD' or 'NAD'. If NULL the version is guessed based on the file name. 
+#' @param encoding encoding of the file. Default "iso-8859-1"
 #' @param ... other parameters passed to \code{read_fwf} 
 #' 
 #'   
 #' @details 
 #' The Gemeindeverzeichnis (municipality register) is published 
-#'  in a fixed width file refered to as "GV1000 ASCII Format" by 
+#'  in a fixed width file referred to as "GV100 ASCII Format" by 
 #'  DESTATIS. The register features the list of municipality and 
 #'  higher order administrative units. The function is a wrapper  
 #'  around [readr::read_fwf()].
@@ -92,7 +92,7 @@ read_gv100 <- function(file, stzrt,
 
 		d <- withCallingHandlers(
 				read_fwf(
-					file=x, 
+					file=I(x), 
 					col_positions=spec_fwf,
 					col_types=spec$col, 
 					locale = locale(encoding = "iso-8859-2"),
@@ -103,7 +103,7 @@ read_gv100 <- function(file, stzrt,
 
 		d <- withCallingHandlers(
 			read_fwf(
-				file=file, 
+				file=I(file), 
 				col_positions=spec_fwf,
 				col_types=spec$col, 
 				locale = locale(encoding = encoding),

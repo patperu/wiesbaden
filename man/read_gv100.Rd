@@ -11,9 +11,9 @@ read_gv100(file, stzrt, version = NULL, encoding = "iso-8859-1", ...)
 
 \item{stzrt}{integer to select the administrative level (see details)}
 
-\item{version}{which GV100 version. If NULL the version is guessed based on the file name.}
+\item{version}{which GV100 version. Either 'AD' or 'NAD'. If NULL the version is guessed based on the file name.}
 
-\item{encoding}{encoding of the file}
+\item{encoding}{encoding of the file. Default "iso-8859-1"}
 
 \item{...}{other parameters passed to \code{read_fwf}}
 }
@@ -25,10 +25,10 @@ The GV100 format is used by DESTATIS to publish the German municipality register
 }
 \details{
 The Gemeindeverzeichnis (municipality register) is published 
- in a fixed width file refered to as "GV1000 ASCII Format" by 
+ in a fixed width file referred to as "GV100 ASCII Format" by 
  DESTATIS. The register features the list of municipality and 
- higher order administrative units. \code{read_gv100()} is a 
- wrapper around [readr::read_fwf()].
+ higher order administrative units. The function is a wrapper  
+ around [readr::read_fwf()].
 
 There are two types of files: One feature the administrative 
 information (\code{version="AD"}) and one with non-administrative 
